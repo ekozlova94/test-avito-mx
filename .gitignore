@@ -1,0 +1,14 @@
+# Intellij Idea
+.idea
+*.ipr
+*.iml
+
+# Binaries for programs and plugins
+*.bin
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test binary, build with `go test -c`
+*.test

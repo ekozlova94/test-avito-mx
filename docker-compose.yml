@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  test-avito-mx:
+    image: docker.io/elkozlova/test-avito-mx:latest
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - "6000:6000"
+    command: "./test-avito-mx --db-path postgresql://admin:admin@postgres:5432/test-avito-mx --port 6000"
+  postgres:
+    image: "postgres:13.0"
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DB: test-avito-mx
+  simulator:
+    image: docker.io/elkozlova/test-avito-mx:latest
+    restart: always
+    ports:
+      - "8090:8090"
+    command: "./simulator"
